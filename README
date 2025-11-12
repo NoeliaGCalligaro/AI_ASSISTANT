@@ -1,0 +1,98 @@
+# 📊 Análisis del Uso de Asistentes de IA en la Vida Estudiantil
+
+## 📘 Descripción del Proyecto
+Este proyecto tiene como objetivo analizar cómo los estudiantes utilizan herramientas de inteligencia artificial (IA) para apoyar sus estudios.  
+A partir de un conjunto de datos que registra sesiones de uso (duración, disciplina, nivel académico, tipo de tarea, satisfacción, etc.), se diseñó un modelo analítico en **Power BI** y un **notebook en Python** para el análisis exploratorio.
+
+El resultado es un **dashboard interactivo en Power BI** que permite visualizar patrones de uso, niveles de satisfacción y tendencias temporales del uso de la IA en contextos educativos.
+
+---
+
+## 🧠 Objetivos
+- Comprender **cuándo y cómo** los estudiantes utilizan los asistentes de IA.  
+- Analizar **la satisfacción** y **la reutilización** de estas herramientas.  
+- Identificar **diferencias por disciplina, nivel académico y tipo de tarea**.  
+- Aplicar buenas prácticas de **modelado dimensional y medidas DAX** en Power BI.  
+
+---
+
+## 🏗️ Estructura del Proyecto
+
+### 📁 1. Data Preparation (ETL en Power BI y Python)
+- **Archivo fuente:** `clean_ai_assistant_usage_student_life.csv`  
+- Limpieza de datos: corrección de separadores decimales, tipos de datos y eliminación de duplicados.  
+- Creación de modelo dimensional en Power BI (modelo estrella):
+
+  **Tablas del modelo:**
+  - `FactAssistantUsage` (tabla de hechos)
+  - `DimStudentLevel`
+  - `DimDiscipline`
+  - `DimTaskType`
+  - `DimAssistanceLevel`
+  - `DimDate`
+
+---
+
+### 🧮 2. Notebook (`AI_ASSISTANT.ipynb`)
+- Exploración inicial de los datos.  
+- Estadísticas descriptivas y análisis de distribución.  
+- Validación de variables clave: duración, satisfacción, frecuencia de uso.  
+- Exportación del dataset limpio para su conexión con Power BI.
+
+---
+
+### 📊 3. Dashboard en Power BI
+
+#### 🧭 Página 1 – *General*
+- **KPIs:**  
+  - Total de sesiones  
+  - Promedio de duración  
+  - Promedio de satisfacción  
+  - Porcentaje de reutilización  
+- **Visualizaciones:**  
+  - Satisfacción por disciplina  
+  - Satisfacción a lo largo del tiempo  
+  - Filtros por año, nivel académico y tipo de tarea  
+
+#### 🎓 Página 2 – *Disciplina*
+- Comparación de duración y satisfacción por disciplina.  
+- Gráfico combinado de sesiones y satisfacción.  
+- Tabla resumen por nivel académico y materia.
+
+#### 💻 Página 3 – *Usos*
+- Distribución de sesiones por tipo de tarea.  
+- Sesiones por nivel de asistencia de IA.  
+- Evolución de sesiones por año.
+
+#### 🧩 Página 4 – *Conclusión*
+- Resumen narrativo de los hallazgos principales.  
+- Insights sobre adopción, satisfacción y oportunidades de mejora.
+
+---
+
+## 📈 Principales Hallazgos
+- **70,6% de reutilización** → los estudiantes valoran la utilidad del asistente.  
+- **Sesiones promedio de 18 minutos**, lo que indica un uso focalizado en tareas específicas.  
+- **Mayor uso en disciplinas de Humanidades y Negocios**, aunque la satisfacción es uniforme entre áreas.  
+- **Tareas de escritura y estudio** son las más frecuentes.  
+- **Satisfacción estable pero levemente descendente** a lo largo del tiempo.
+
+---
+
+## ⚙️ Tecnologías Utilizadas
+| Herramienta | Uso |
+|--------------|-----|
+| **Power BI** | Modelado dimensional, DAX, visualización interactiva |
+| **Python (Pandas, Matplotlib, Seaborn)** | Limpieza y análisis exploratorio |
+| **CSV / Excel** | Fuente de datos original |
+| **GitHub** | Versionado y documentación del proyecto |
+
+---
+
+## 🧩 Modelo Dimensional
+
+```text
+DimStudentLevel     ┐
+DimDiscipline       ├──> FactAssistantUsage <── DimTaskType
+DimAssistanceLevel  │
+DimDate             ┘
